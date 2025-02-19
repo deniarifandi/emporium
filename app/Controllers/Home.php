@@ -111,7 +111,7 @@ class Home extends BaseController
         $data = [
             'email' => $email,
             'grade' => $grade,
-            'nama' => $nama
+            'nama' => $nama,
             'ticket_no' => $no_tiket
 
         ];
