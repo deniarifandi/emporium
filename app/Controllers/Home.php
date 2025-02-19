@@ -112,13 +112,14 @@ class Home extends BaseController
             'email' => $email,
             'grade' => $grade,
             'nama' => $nama,
+            'occupation' => $occupation,
             'ticket_no' => $no_tiket
 
         ];
 
         // Insert data into the table
         $builder = $this->db->table('pendaftar');
-        if ($builder->upsert($data)) {
+        if ($builder->insert($data)) {
             // Set success message in session
             $this->session->setFlashdata('result', 'sukses');
             

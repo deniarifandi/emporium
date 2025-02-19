@@ -35,18 +35,14 @@
         <input type="text" id="loginName" name="grade" class="form-control" required />
       </div>
     
-     <!--  <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="loginName">Tempat, Tanggal Lahir</label>
-        <input type="text" id="loginName" name="ttl" class="form-control" />
-      </div> -->
-      <!-- <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="loginName">Branch:</label>
-        <input type="text" id="loginName" name="hp" class="form-control" required />
-      </div>
-      <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label" for="loginName">Relationship:</label>
-        <input type="text" id="loginName" name="occupation" class="form-control" required />
-      </div> -->
+      <label class="form-label" for="loginName">Occupation:</label>
+     <select name="occupation" id="cars" class="form-control">
+          <option value="">-- Select Option --</option>
+            <option value="semifinal">Semifinal</option>
+            <option value="final">Final</option>
+            <option value="pengunjung">Pengunjung</option>
+            
+          </select>
 
       <!-- Password input -->
       <div data-mdb-input-init class="form-outline mb-4">
