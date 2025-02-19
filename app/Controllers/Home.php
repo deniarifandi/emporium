@@ -240,7 +240,7 @@ Have a nice day!");
     $message = "
     <p>Dear <strong>$nama</strong>,</p>
     <p>Thank you, we have received your registration.</p>
-    <p>Below is your entrance ticket link to attend the Chinese New Year Celebration:</p>
+    <p>Below is your entrance ticket link to attend the Emporium Business Competition 2025:</p>
     <p><a href='https://sinarumi.co.id/emporium/public/tiket?no=$no_tiket' target='_blank'>
        <strong>Click here for your ticket</strong></a></p>
     <p><em>Note:</em><br> 
