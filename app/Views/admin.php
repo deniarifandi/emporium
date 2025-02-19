@@ -27,10 +27,10 @@
               <tr>
                   <th>No</th>
                   <th>Nama</th>
-                 
+                  <th>Relationship</th>
                   <th>E-Mail</th>
                   <th>Occupation</th>
-                  <th>Relationship</th>
+                  
                   <th>Register Time</th>
                   <th>Status Pengiriman Tiket</th>
                   <th>Nomor Tiket</th>
