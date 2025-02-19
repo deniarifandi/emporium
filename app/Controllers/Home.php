@@ -100,8 +100,8 @@ class Home extends BaseController
         $nama = $this->request->getPost('nama', FILTER_SANITIZE_STRING);
         $email = $this->request->getPost('email', FILTER_SANITIZE_EMAIL);
         $grade = $this->request->getPost('grade', FILTER_SANITIZE_EMAIL);
-        //$hp = $this->request->getPost('hp', FILTER_SANITIZE_STRING);
-        //$occupation = $this->request->getPost('occupation', FILTER_SANITIZE_STRING);
+        // $hp = $this->request->getPost('hp', FILTER_SANITIZE_STRING);
+        $occupation = $this->request->getPost('occupation', FILTER_SANITIZE_STRING);
 
          $timestamp = time() % 100000; // Current timestamp in milliseconds
         $randomPart = rand(0, 99);  // 4-digit random number
