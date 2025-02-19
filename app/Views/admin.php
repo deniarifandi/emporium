@@ -27,10 +27,10 @@
               <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <th>Branch</th>
+                 
                   <th>E-Mail</th>
+                  <th>Occupation</th>
                   <th>Relationship</th>
-                  
                   <th>Register Time</th>
                   <th>Status Pengiriman Tiket</th>
                   <th>Nomor Tiket</th>
@@ -42,7 +42,7 @@
                 <tr>
                   <td><?php echo $i+1; ?></td>
                   <td><?php echo $admin[$i]->nama; ?></td>
-                  <td><?php echo $admin[$i]->hp; ?></td>
+                  <td><?php echo $admin[$i]->grade; ?></td>
                   <td><?php echo $admin[$i]->email; ?></td>
                   <td><?php echo $admin[$i]->occupation; ?></td>
                   <td><?php echo $admin[$i]->timestamp; ?></td>
