@@ -158,8 +158,9 @@ class Home extends BaseController
         $config["SMTPPass"]  = "n@PnMwkB#k3@";
         $config["SMTPPort"]  = 465;
         $config["SMTPCrypto"] = "ssl";
-      
-        $config['smtp_port'] = 587;
+        $config["mailType"]   = "html";
+        
+       // $config['smtp_port'] = 587;
 
         $email_smtp->initialize($config);
 
@@ -218,7 +219,7 @@ Have a nice day!");
         $config["SMTPPass"]  = "n@PnMwkB#k3@";
         $config["SMTPPort"]  = 465;
         $config["SMTPCrypto"] = "ssl";
-        $config['smtp_port'] = 587;
+       // $config['smtp_port'] = 587;
 
         $email_smtp->initialize($config);
 
