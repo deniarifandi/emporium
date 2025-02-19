@@ -209,8 +209,71 @@ Have a nice day!");
             }
     }
 
+    public function send_ticket($namanya, $emailnya, $no_tiket) {
+    $email_smtp = \Config\Services::email();
+    $builder = $this->db->table('pendaftar');
 
-    public function send_ticket($namanya, $emailnya,$no_tiket){
+    // Secure SMTP Config
+    $config = [
+        "protocol"   => "smtp",
+        "SMTPHost"   => "mail.sinarumi.co.id",
+        "SMTPUser"   => "mli_event@sinarumi.co.id", // Use environment variable
+        "SMTPPass"   => "n@PnMwkB#k3@", // Secure credentials
+        "SMTPPort"   => 465, // Change to 587 for TLS
+        "SMTPCrypto" => "ssl", // Change to "tls" if using port 587
+        "mailType"   => "html", // Ensures HTML support
+        "charset"    => "utf-8",
+        "wordWrap"   => true
+    ];
+
+    $email_smtp->initialize($config);
+
+    $nama = htmlspecialchars($namanya, ENT_QUOTES, 'UTF-8');
+    $email = filter_var($emailnya, FILTER_VALIDATE_EMAIL);
+
+    if (!$email) {
+        log_message('error', "Invalid email address: $emailnya");
+        return view('tiket_notsent');
+    }
+
+    $subject = "Registration Confirmation: Emporium Business Competition 2025";
+    $message = "
+    <p>Dear <strong>$nama</strong>,</p>
+    <p>Thank you, we have received your registration.</p>
+    <p>Below is your entrance ticket link to attend the Chinese New Year Celebration:</p>
+    <p><a href='https://sinarumi.co.id/emporium/public/tiket?no=$no_tiket' target='_blank'>
+       <strong>Click here for your ticket</strong></a></p>
+    <p><em>Note:</em><br> 
+    Kindly arrive 30 minutes before the event starts, as there will be re-registration.</p>
+    <p>Thank you! See you soon.</p>";
+
+    $email_smtp->setFrom("mli_event@sinarumi.co.id", "Emporium Business Competition");
+    $email_smtp->setTo($email);
+    $email_smtp->setSubject($subject);
+    $email_smtp->setMessage($message);
+
+    if (!$email_smtp->send()) {
+        log_message('error', "Email failed to send to $email: " . $email_smtp->printDebugger(['headers']));
+        return view('tiket_notsent');
+    } else {
+        // Update database flag
+        $data = [
+            'flag_tiket' => 1,
+            'ticket_no'  => $no_tiket
+        ];
+
+        $builder->where('email', $email);
+        if (!$builder->update($data)) {
+            log_message('error', "Database update failed for email: $email");
+            return view('tiket_notsent');
+        }
+
+        return view('tiket_sent');
+    }
+}
+
+
+    public function send_ticket2($namanya, $emailnya,$no_tiket){
         $email_smtp = \Config\Services::email();
         $builder = $this->db->table('pendaftar');
         $config["protocol"] = "smtp";
@@ -237,7 +300,7 @@ Dear $nama,
 
 Thank you, we have received your registration.
   
-Below is your entrance ticket link to attend the Chinese New Year Celebration
+Below is your entrance ticket link to attend the Emporium Business Competition 2025
 
 Please show your ticket during the re-registration process.  
 
